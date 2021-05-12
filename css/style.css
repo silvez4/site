@@ -1,0 +1,22 @@
+:root {
+  --rosa-neon: #FF0099;
+  --bg-preto: #493240;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-size: 3em;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-preto);
+  /*
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  */
+}
+
+nav {
+  background-color: var(--rosa-neon);
+}
