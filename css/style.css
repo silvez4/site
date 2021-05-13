@@ -1,22 +1,190 @@
 :root {
   --rosa-neon: #FF0099;
+  --blue-neon: #05d9e8;
+  --purple-neon: #7a04eb;
+  --green-neon: #defe47;
   --bg-preto: #493240;
+  --bg-escuro: #120458;
+  --branco: #e2dddf;
+  --tempo-menu: 300ms;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  background-image: url(../imagens/bg-cy.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100vh;
-  font-size: 3em;
+  font-size: 1rem;
   font-family: 'Roboto', sans-serif;
   background-color: var(--bg-preto);
-  /*
-  display: grid;
+}
+
+header {
+  background: var(--rosa-neon);
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  z-index: 999;
+}
+
+.menu {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  */
+}
+
+.menu_btn,
+.menu_btn::before,
+.menu_btn::after {
+  display: block;
+  background: var(--blue-neon);
+  height: 4px;
+  width: 2em;
+  border-radius: 5px;
+  position: relative;
+  transition: all var(--tempo-menu) ease-in-out;
+  -webkit-transition: all var(--tempo-menu) ease-in-out;
+  -moz-transition: all var(--tempo-menu) ease-in-out;
+  -ms-transition: all var(--tempo-menu) ease-in-out;
+  -o-transition: all var(--tempo-menu) ease-in-out;
+  transition: all var(--tempo-menu) ease-in-out;
+}
+
+.menu_btn::before,
+.menu_btn::after {
+  content: '';
+  position: absolute;
+}
+
+.menu_btn::before {
+  bottom: 7px;
+}
+
+.menu_btn::after {
+  top: 7px;
+}
+
+.menu.open .menu_btn {
+  transform: translateX(-15px);
+  background: transparent;
+}
+
+.menu.open .menu_btn::before {
+  transform: translate(15px, 7px) rotate(35deg);
+}
+
+.menu.open .menu_btn::after {
+  transform: translate(15px, -7px) rotate(-35deg);
 }
 
 nav {
-  background-color: var(--rosa-neon);
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: var(--rosa-neon);
+  width: 100%;
+  -webkit-transition: all var(--tempo-menu) ease-in-out;
+  -moz-transition: all var(--tempo-menu) ease-in-out;
+  -ms-transition: all var(--tempo-menu) ease-in-out;
+  -o-transition: all var(--tempo-menu) ease-in-out;
+  transition: all var(--tempo-menu) ease-in-out;
+  transform: translateX(-100%);
+}
+
+nav.open {
+  transform: translateX(0);
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+nav a {
+  color: var(--bg-escuro);
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+nav a:hover {
+  color: var(--blue-neon);
+}
+
+@media screen and (min-width: 700px) {
+  .menu {
+    display: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+
+  .logo {
+    grid-column: 2 / 3;
+  }
+
+  nav {
+    all: unset;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav a {
+    position: relative;
+  }
+
+  nav a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 3px;
+    background: var(--blue-neon);
+    top: 1.125em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transform-origin: left;
+    -webkit-transition: all var(--tempo-menu) ease-in-out;
+    -moz-transition: all var(--tempo-menu) ease-in-out;
+    -ms-transition: all var(--tempo-menu) ease-in-out;
+    -o-transition: all var(--tempo-menu) ease-in-out;
+    transition: all var(--tempo-menu) ease-in-out;
+  }
+
+  nav a:hover::after {
+    transform: scale(1, 1);
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
 }
