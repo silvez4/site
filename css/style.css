@@ -1,11 +1,13 @@
 :root {
-  --rosa-neon: #FF0099;
-  --blue-neon: #05d9e8;
-  --purple-neon: #7a04eb;
-  --green-neon: #defe47;
-  --bg-preto: #493240;
-  --bg-escuro: #120458;
-  --branco: #e2dddf;
+  --rosa-neon: rgba(255, 0, 153, 1);
+  --blue-neon: rgba(5, 217, 232, 1);
+  --green-neon: rgba(117, 241, 217, 1);
+  --purple-neon: rgba(123, 4, 235, 1);
+  --green-neon: rgba(222, 254, 71, 1);
+  --bg-blue: rgba(100, 253, 250, 1);
+  --bg-preto: rgba(73, 50, 64, 1);
+  --bg-escuro: rgba(18, 4, 88, 0.5);
+  --branco: rgba(226, 221, 223, 1);
   --tempo-menu: 300ms;
 }
 
@@ -17,6 +19,12 @@
   box-sizing: border-box;
 }
 
+canvas {
+  display: none;
+  position: absolute;
+  top: 500px;
+}
+
 body {
   background-image: url(../imagens/bg-cy.jpg);
   background-size: cover;
@@ -24,10 +32,18 @@ body {
   height: 100vh;
   font-size: 1rem;
   font-family: 'Roboto', sans-serif;
-  background-color: var(--bg-preto);
+  color: var(--bg-blue);
+
+}
+
+.logo {
+  max-width: 4rem;
+  max-height: 4rem;
+  background-color: var(--purple-neon);
 }
 
 header {
+  display: block;
   background: var(--rosa-neon);
   position: fixed;
   width: 100%;
@@ -35,6 +51,102 @@ header {
   z-index: 999;
 }
 
+.corpo {
+  display: block;
+  position: absolute;
+  top: 4rem;
+  width: 100%;
+}
+
+.portfolio h2 {
+  text-align: center;
+  padding-bottom: 1rem;
+  text-decoration: underline;
+}
+
+li {
+  padding-top: 1rem;
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+  color: var(--blue-neon);
+}
+
+.portfolio {
+  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100% - 5rem);
+  margin: 1rem auto;
+  padding: 2rem;
+  text-align: center;
+  /*position: relative; */
+  background-color: var(--bg-escuro);
+  border-radius: 1rem;
+  box-shadow: 0.5em 0.5em 1em var(--blue-neon),
+    inset 0 0 1em var(--blue-neon);
+}
+
+.trabalhos {
+  overflow: hidden;
+  padding-top: 1rem;
+}
+
+.portfolio img {
+  float: none;
+  padding: 2rem;
+  max-height: 50%;
+  max-width: 50%;
+}
+
+.portfolio ul>* {
+  text-shadow: 1px 1px 10px currentColor;
+}
+
+.portfolio li>a {
+  color: var(--rosa-neon);
+  padding-top: 1rem;
+}
+
+/* .portfolio::before,
+.portfolio::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(-45deg,
+      var(--rosa-neon),
+      var(--blue-neon),
+      var(--purple-neon));
+  border-radius: 1rem;
+  background-size: 400%;
+  height: calc(100% + 5px);
+  width: calc(100% + 5px);
+  z-index: -1;
+  animation: movimentar 4s linear infinite;
+} 
+
+@keyframes movimentar {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+} 
+
+.portfolio::after {
+  filter: blur(40px);
+  opacity: .5;
+}
+*/
 .menu {
   cursor: pointer;
   position: absolute;
@@ -121,7 +233,7 @@ nav li {
 }
 
 nav a {
-  color: var(--bg-escuro);
+  color: var(--purple-neon);
   text-decoration: none;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -131,24 +243,49 @@ nav a:hover {
   color: var(--blue-neon);
 }
 
+nav a::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 3px;
+  background: var(--blue-neon);
+  left: 0;
+  right: 0;
+  transform: scale(0, 1);
+  transform-origin: left;
+  -webkit-transition: all var(--tempo-menu) ease-in-out;
+  -moz-transition: all var(--tempo-menu) ease-in-out;
+  -ms-transition: all var(--tempo-menu) ease-in-out;
+  -o-transition: all var(--tempo-menu) ease-in-out;
+  transition: all var(--tempo-menu) ease-in-out;
+}
+
+nav a:hover::after {
+  transform: scale(0.2, 1);
+}
+
 @media screen and (min-width: 700px) {
+  .portfolio img {
+    float: left;
+  }
+
   .menu {
     display: none;
   }
 
   header {
-    display: grid;
-    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+    display: flex;
+    justify-content: center;
   }
 
   .logo {
-    grid-column: 2 / 3;
+    margin-right: 4rem;
   }
 
   nav {
     all: unset;
-    grid-column: 3 / 4;
     display: flex;
+    padding-right: 3rem;
     justify-content: flex-end;
     align-items: center;
   }
@@ -158,21 +295,7 @@ nav a:hover {
   }
 
   nav a::after {
-    content: '';
-    display: block;
-    position: absolute;
-    height: 3px;
-    background: var(--blue-neon);
     top: 1.125em;
-    left: 0;
-    right: 0;
-    transform: scale(0, 1);
-    transform-origin: left;
-    -webkit-transition: all var(--tempo-menu) ease-in-out;
-    -moz-transition: all var(--tempo-menu) ease-in-out;
-    -ms-transition: all var(--tempo-menu) ease-in-out;
-    -o-transition: all var(--tempo-menu) ease-in-out;
-    transition: all var(--tempo-menu) ease-in-out;
   }
 
   nav a:hover::after {

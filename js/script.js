@@ -13,3 +13,96 @@ menuBtn.addEventListener('click', () => {
     document.getElementById("#menu").style.display = "none";
   }
 });
+
+//---  Animação com Three js ---
+let scene, camera, renderer, cube;
+let telaC = document.getElementById('telaC');
+
+function init() {
+  scene = new THREE.Scene();
+  scene.background = new THREE.CubeTextureLoader()
+  .setPath('imagens/').load([
+    'front.png',
+    'back.png',
+    'top.png',
+    'bottom.png',
+    'left.png',
+    'right.png'
+  ]);
+  
+  renderer = new THREE.WebGLRenderer({canvas: telaC, antialias: true});
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  camera = new THREE.PerspectiveCamera(75, 
+  window.innerWidth / window.innerHeight, 
+  1,
+  500);
+  //const controls = new OrbitControls( camera, renderer.domElement );
+  var controls = new THREE.OrbitControls( camera, renderer.domElement );
+  let luzAmbiente = new THREE.AmbientLight(0xaaaaaa);
+  scene.add(luzAmbiente);
+  camera.position.set(0,50,200);
+  //controls.update();
+  // renderer = new THREE.WebGLRenderer({canvas: telaC, antialias: true});
+  // renderer.setSize(window.innerWidth, window.innerHeight);
+  // document.body.appendChild(renderer.domElement);
+
+  // // Criando Cubo
+  // const geometry = new THREE.BoxGeometry(3,3,3);
+  // const material = new THREE.MeshBasicMaterial( { color: '#FF0099' } );
+  // cube = new THREE.Mesh( geometry, material );
+  // scene.add( cube );
+  //camera.position.z = 5;
+  
+  //--- Font JetBrains Json ---
+  // --- Criando Texto
+  let fontLoader = new THREE.FontLoader();
+  fontLoader.load('fonts/JetBrains_Mono_Bold.json',function(font){
+	let geometrySetting = {
+		font: font,
+		size:40,
+		height:5,
+		curveSegments:20,
+		bevelEnabled: true,
+		bevelThickness: 1,
+		bevelSize: 0.5,
+		bevelSegments: 20
+	};
+	let textGeoHTML = new THREE.TextGeometry('HTML', geometrySetting);
+	let textGeoCSS = new THREE.TextGeometry('CSS', geometrySetting);
+
+	let textMatHTML = new THREE.MeshLambertMaterial({color: 0xcccccc});
+	let textMatCSS = new THREE.MeshLambertMaterial({color: 0xcccccc});
+
+	let textHTML = new THREE.Mesh(textGeoHTML, textMatHTML);
+	let textCSS = new THREE.Mesh(textGeoCSS, textMatCSS);
+
+	textHTML.position.set(-100,0,20);
+	textCSS.position.set(30,0,20);
+
+	scene.add(textHTML);
+	scene.add(textCSS);
+  });
+  
+  animate2();
+}
+function animate2(){
+  renderer.render(scene,camera);
+  requestAnimationFrame(animate2);
+  //controls.update();
+}
+// function animate() {
+//   requestAnimationFrame( animate );
+//   cube.rotation.x += 0.01;
+//   cube.rotation.y += 0.01;
+// 	renderer.render( scene, camera );
+// }
+function threeResponsivo(){
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+window.addEventListener('resize', threeResponsivo);
+init();
+//animate();
