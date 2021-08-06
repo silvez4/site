@@ -1,0 +1,142 @@
+/* Corpo*/
+canvas {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  z-index: -1;
+}
+
+.inicio {
+  z-index: 10;
+}
+
+a {
+  color: red;
+}
+
+body {
+  overflow-x: hidden;
+  background-image: url(../imagens/bg-cy.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
+  font-size: clamp(1.2rem, 1.6rem, 2vw);
+  color: var(--bg-blue);
+}
+
+.secao {
+  position: relative;
+  display: grid;
+  text-align: center;
+  flex-direction: column;
+  width: 98%;
+  height: 80vh;
+  margin: 2.5rem auto;
+  padding: 1rem;
+  background-color: var(--bg-escuro);
+  border-radius: 1rem;
+  box-shadow: 0.5em 0.5em 1em var(--blue-neon),
+    inset 0 0 1em var(--blue-neon);
+}
+
+.chamada {
+  position: relative;
+}
+
+.inicio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inicio .texto {
+  padding: 0 1rem 0 1rem;
+}
+
+.btn_mais {
+  margin-top: 1rem;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inicio .nome {
+  color: var(--rosa-neon);
+  display: inline-block;
+  padding: 0 .5rem 0 .5rem;
+  font-style: italic;
+}
+
+.portfolio h2 {
+  text-align: center;
+  padding-bottom: 1rem;
+  text-decoration: underline;
+}
+
+li {
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+  color: var(--blue-neon);
+}
+
+.trabalhos {
+  overflow: hidden;
+  padding-top: 1rem;
+}
+
+.portfolio img {
+  float: none;
+  padding: 2rem;
+  max-width: 20rem;
+}
+
+.portfolio ul>* {
+  text-shadow: 1px 1px 10px currentColor;
+}
+
+.portfolio li>a {
+  color: var(--rosa-neon);
+  padding-top: 1rem;
+}
+
+/* .portfolio::before,
+.portfolio::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(-45deg,
+      var(--rosa-neon),
+      var(--blue-neon),
+      var(--purple-neon));
+  border-radius: 1rem;
+  background-size: 400%;
+  height: calc(100% + 5px);
+  width: calc(100% + 5px);
+  z-index: -1;
+  animation: movimentar 4s linear infinite;
+}
+
+@keyframes movimentar {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.portfolio::after {
+  filter: blur(40px);
+  opacity: .5;
+} */

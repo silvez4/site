@@ -1,0 +1,219 @@
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--rosa-neon);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  z-index: 999;
+  font-size: 1.6rem;
+}
+
+.logo {
+  position: relative;
+  margin: 0 auto;
+  max-width: 5rem;
+  max-height: 5rem;
+  background-color: var(--purple-neon);
+}
+
+.logo img {
+  width: 100%;
+}
+
+.menu-mobile {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu-mobile_btn,
+.menu-mobile_btn::before,
+.menu-mobile_btn::after {
+  display: block;
+  background: var(--blue-neon);
+  height: 4px;
+  width: 2em;
+  border-radius: 5px;
+  position: relative;
+  transition: all var(--tempo-menu) ease-in-out;
+  -webkit-transition: all var(--tempo-menu) ease-in-out;
+  -moz-transition: all var(--tempo-menu) ease-in-out;
+  -ms-transition: all var(--tempo-menu) ease-in-out;
+  -o-transition: all var(--tempo-menu) ease-in-out;
+  transition: all var(--tempo-menu) ease-in-out;
+}
+
+.menu-mobile_btn::before,
+.menu-mobile_btn::after {
+  content: '';
+  position: absolute;
+}
+
+.menu-mobile_btn::before {
+  bottom: 7px;
+}
+
+.menu-mobile_btn::after {
+  top: 7px;
+}
+
+.menu-mobile.open .menu-mobile_btn {
+  transform: translateX(-15px);
+  background: transparent;
+}
+
+.menu-mobile.open .menu-mobile_btn::before {
+  transform: translate(15px, 7px) rotate(35deg);
+}
+
+.menu-mobile.open .menu-mobile_btn::after {
+  transform: translate(15px, -7px) rotate(-35deg);
+}
+
+.menu {
+  position: absolute;
+  text-align: right;
+  top: 100%;
+  left: 0;
+  background: var(--rosa-neon);
+  width: 50%;
+  -webkit-transition: all var(--tempo-menu) ease-in-out;
+  -moz-transition: all var(--tempo-menu) ease-in-out;
+  -ms-transition: all var(--tempo-menu) ease-in-out;
+  -o-transition: all var(--tempo-menu) ease-in-out;
+  transition: all var(--tempo-menu) ease-in-out;
+  transform: translateX(200%);
+}
+
+.menu.open {
+  transform: translateX(100%);
+}
+
+.menu {
+  list-style: none;
+}
+
+.menu li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+.menu a {
+  display: block;
+  /* color: var(--purple-neon); */
+  padding-right: 1rem;
+  text-decoration: none;
+  font-size: clamp(12px, 1.6rem, 2vw);
+  text-transform: uppercase;
+}
+
+.menu a:hover,
+.menu a:focus {
+  color: var(--blue-neon);
+  background-color: var(--bg-preto);
+}
+
+.menu a::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 3px;
+  background: var(--blue-neon);
+  left: 0;
+  right: 0;
+  transform: scale(0, 1);
+  transform-origin: right;
+  -webkit-transition: all var(--tempo-menu) ease-in-out;
+  -moz-transition: all var(--tempo-menu) ease-in-out;
+  -ms-transition: all var(--tempo-menu) ease-in-out;
+  -o-transition: all var(--tempo-menu) ease-in-out;
+  transition: all var(--tempo-menu) ease-in-out;
+}
+
+.menu a:hover::after,
+.menu a:focus::after {
+  transform: scale(0.25, 1);
+}
+
+@media screen and (min-width: 768px) {
+  .menu {
+    all: unset;
+    margin: 0;
+    padding: 0;
+    height: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  /* EVITAR MAL ALINHAMENTO AO TROCAR PARA VERSAO NORMAL COM O MENU MOBILE ABERTO */
+  .menu.open {
+    transform: translateX(0%);
+  }
+
+  .menu li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100%;
+  }
+
+  .menu li:hover {
+    background-color: red;
+  }
+
+  .menu li a {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding: 0 1rem;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu li a::after {
+    position: absolute;
+    bottom: 1.5rem;
+  }
+
+  .menu li:hover a::after,
+  .menu li:focus a:after {
+    transition: transform 800ms ease;
+    transform: scale(1, 1);
+    transform-origin: center;
+  }
+
+  .inicio .texto {
+    padding: 0 5rem 0 5rem;
+    font-size: clamp(12px, 2.2rem, 2vw);
+  }
+
+  .portfolio img {
+    float: left;
+  }
+
+  .menu-mobile {
+    display: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+  }
+
+  .logo {
+    margin: 0 auto;
+  }
+}

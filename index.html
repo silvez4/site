@@ -6,26 +6,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/global.css">
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js
+  " defer></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="./js/OrbitControls.js" defer></script>
+  <script src="./js/script.js" defer></script>
   <title>Gabriel SA</title>
 </head>
 <body>
   <header>
-    <img src="./imagens/logo.png" alt="logo-site" class="logo">
-    <div class="menu">
-      <span class="menu_btn"></span>
+    <div class="logo">
+      <img src="./imagens/logo.png" alt="logo-site">
     </div>
-    <nav>
-      <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Portfólio</a></li>
-        <li><a href="#">Resume</a></li>
-        <li><a href="#">Contato</a></li>
+    <div class="menu-mobile">
+      <span class="menu-mobile_btn"></span>
+    </div>
+      <ul class="menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contato">Contato</a></li>
       </ul>
-    </nav>
   </header>
-    <section class="corpo">
-      <div id="portfolio" class="portfolio">
+      <div id="inicio" class="inicio secao">
+          <div id="particles-inicio" class="particles-inicio"></div>
+        <div class="texto">
+          Olá, Sou<span class="nome">Gabriel Silva</span> Estudante de Ciência da Computação e Web Developer<br>
+            <a href="#portfolio" class="chamada">Conheça Mais <span class="btn_seta"></span></a>
+        </div>
+      </div>
+
+      <div id="portfolio" class="portfolio secao">
         <h2>Portfólio</h2>
         <div class="conteudo">
           <div>
@@ -43,11 +58,6 @@
           </div>
         </div>
       </div>
-    </section>
-    <div class="teste">aaaaaaaaa</div>
     <canvas id="telaC"></canvas>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="./js/OrbitControls.js"></script>
-  <script src="./js/script.js"></script>
 </body>
 </html>

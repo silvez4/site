@@ -1,0 +1,46 @@
+:root {
+  --rosa-neon: rgb(255, 0, 153);
+  --blue-neon: rgb(5, 217, 232);
+  --green-neon: rgba(117, 241, 217, 1);
+  --purple-neon: rgb(123, 4, 235);
+  --green-neon: rgba(222, 254, 71, 1);
+  --bg-blue: rgba(100, 253, 250, 1);
+  --bg-preto: rgba(73, 50, 64, 1);
+  --bg-escuro: rgba(18, 4, 88, 0.5);
+  --branco: rgba(226, 221, 223, 1);
+
+  --tempo-menu: 300ms;
+  scroll-behavior: smooth;
+  font-family: 'Roboto', sans-serif;
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-escuro);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rosa-neon);
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-preto);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--purple-neon);
+}
