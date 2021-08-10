@@ -1,19 +1,4 @@
 window.onload = function(){
-  // Particles.init({
-  //   selector: '.particles-inicio',
-  //   color: ['#ff0099', '#05d9e8'],
-  //   maxParticles: 120,
-  //   connectParticles: true,
-  //   responsive: [
-  //     {
-  //       breakpoint: 768,
-  //       options: {
-  //         maxParticles: 60,
-  //         color: '#ff0099'
-  //       }
-  //     }
-  //   ]
-  // });
   particlesJS('inicio',
   {
     "particles": {
@@ -126,111 +111,190 @@ window.onload = function(){
     "retina_detect": true
   }
   );
-}
-const menuBtn = document.querySelector('.menu-mobile');
-const menu = document.querySelector('.menu');
-let menuAtivo = false;
-menuBtn.addEventListener('click', () => {
-  if(!menuAtivo){
-    menuBtn.classList.add('open');
-    menu.classList.add('open');
-    menuAtivo = true;
-  } else{
-    menuBtn.classList.remove('open');
-    menu.classList.remove('open');
-    menuAtivo = false;
-  }
-});
 
-//---  Animação com Three js ---
-let scene, camera, renderer, cube;
-let telaC = document.getElementById('telaC');
-
-function init() {
-  scene = new THREE.Scene();
-  scene.background = new THREE.CubeTextureLoader()
-  .setPath('imagens/').load([
-    'front.png',
-    'back.png',
-    'top.png',
-    'bottom.png',
-    'left.png',
-    'right.png'
-  ]);
-  
-  renderer = new THREE.WebGLRenderer({canvas: telaC, antialias: true});
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
-
-  camera = new THREE.PerspectiveCamera(75, 
-  window.innerWidth / window.innerHeight, 
-  1,
-  500);
-  //const controls = new OrbitControls( camera, renderer.domElement );
-  var controls = new THREE.OrbitControls( camera, renderer.domElement );
-  let luzAmbiente = new THREE.AmbientLight(0xaaaaaa);
-  scene.add(luzAmbiente);
-  camera.position.set(0,50,200);
-  //controls.update();
-  // renderer = new THREE.WebGLRenderer({canvas: telaC, antialias: true});
-  // renderer.setSize(window.innerWidth, window.innerHeight);
-  // document.body.appendChild(renderer.domElement);
-
-  // // Criando Cubo
-  // const geometry = new THREE.BoxGeometry(3,3,3);
-  // const material = new THREE.MeshBasicMaterial( { color: '#FF0099' } );
-  // cube = new THREE.Mesh( geometry, material );
-  // scene.add( cube );
-  //camera.position.z = 5;
-  
-  //--- Font JetBrains Json ---
-  // --- Criando Texto
-  let fontLoader = new THREE.FontLoader();
-  fontLoader.load('fonts/JetBrains_Mono_Bold.json',function(font){
-	let geometrySetting = {
-		font: font,
-		size:40,
-		height:5,
-		curveSegments:20,
-		bevelEnabled: true,
-		bevelThickness: 1,
-		bevelSize: 0.5,
-		bevelSegments: 20
-	};
-	let textGeoHTML = new THREE.TextGeometry('HTML', geometrySetting);
-	let textGeoCSS = new THREE.TextGeometry('CSS', geometrySetting);
-
-	let textMatHTML = new THREE.MeshLambertMaterial({color: 0xcccccc});
-	let textMatCSS = new THREE.MeshLambertMaterial({color: 0xcccccc});
-
-	let textHTML = new THREE.Mesh(textGeoHTML, textMatHTML);
-	let textCSS = new THREE.Mesh(textGeoCSS, textMatCSS);
-
-	textHTML.position.set(-100,0,20);
-	textCSS.position.set(30,0,20);
-
-	scene.add(textHTML);
-	scene.add(textCSS);
+  const menuBtn = document.querySelector('.menu-mobile');
+  const menu = document.querySelector('.menu');
+  let menuAtivo = false;
+  menuBtn.addEventListener('click', () => {
+    if(!menuAtivo){
+      menuBtn.classList.add('open');
+      menu.classList.add('open');
+      menuAtivo = true;
+    } else{
+      menuBtn.classList.remove('open');
+      menu.classList.remove('open');
+      menuAtivo = false;
+    }
   });
+
+  //---  Animação com Three js ---
+  let scene, camera, renderer; 
   
-  animate2();
+  function init() {
+    container = document.getElementById( 'impressao' );
+    scene = new THREE.Scene();
+    initFundo();
+    initCamera();
+    initRenderer();
+    initTexto();
+    initForma();
+  }
+  function initFundo(){
+    scene.background = new THREE.CubeTextureLoader()
+    .setPath('imagens/').load([
+      'right.png',
+      'left.png',
+      'top.png',
+      'bottom.png',
+      'front.png',
+      'back.png'
+    ]);
+  }
+  
+  function initCamera(){
+    camera = new THREE.PerspectiveCamera(55, 
+      container.offsetWidth / container.offsetHeight, 
+    1,
+    500);
+    let luzAmbiente = new THREE.AmbientLight(0xffffff);
+    scene.add(luzAmbiente);
+    camera.position.set(0,50,200);
+    // ATIVAR CONTROLE COM MOUSE
+    // var controls = new THREE.OrbitControls( camera, renderer.domElement );
+    //controls.update();
+  }
+
+  function initRenderer(){
+    renderer = new THREE.WebGLRenderer({antialias: true});
+    renderer.setSize( container.offsetWidth, container.offsetHeight );
+    container.appendChild( renderer.domElement );
+  }
+  function initTexto(){
+    //--- Font JetBrains Json ---
+    // --- Criando Texto
+    let fontLoader = new THREE.FontLoader();
+    fontLoader.load('fonts/JetBrains_Mono_Bold.json',function(font){
+      let geometrySetting = {
+        font: font,
+        size:30,
+        height:5,
+        curveSegments:20,
+        bevelEnabled: true,
+        bevelThickness: 1,
+        bevelSize: 0.5,
+        bevelSegments: 20
+      };
+      let textGeo1 = new THREE.TextGeometry('Deixe', geometrySetting);
+      let textGeo2 = new THREE.TextGeometry('Sua', geometrySetting);
+      let textGeo3 = new THREE.TextGeometry('Marca', geometrySetting);
+
+      let textMatRosa = new THREE.MeshLambertMaterial({color: 0xff0099});
+      let textMatAzul = new THREE.MeshLambertMaterial({color: 0x05d9e8});
+
+      let text1 = new THREE.Mesh(textGeo1, textMatRosa);
+      let text2 = new THREE.Mesh(textGeo2, textMatAzul);
+      let text3 = new THREE.Mesh(textGeo3, textMatRosa);
+
+      text1.position.set(-100,100,20);
+      text2.position.set(20,50,20);
+      text3.position.set(-100,0,20);
+      scene.add(text1);
+      scene.add(text2);
+      scene.add(text3);
+    });
+  }
+
+  function initForma(){
+    // // Criando Cubo
+    const geoCubo = new THREE.BoxGeometry(13,13,13);
+    const materialC = new THREE.MeshBasicMaterial( { color: '#7B04EB' } );
+    cubo = new THREE.Mesh( geoCubo, materialC );
+
+    const geoEsfera = new THREE.SphereGeometry( 15, 32, 16 );
+    const geoEsfera2 = new THREE.SphereGeometry( 7.5, 16, 8, 3 );
+    const material = new THREE.ShaderMaterial({
+      uniforms: {
+        color1: {
+          value: new THREE.Color(0xff0099)
+        },
+        color2: {
+          value: new THREE.Color(0x64fdfa)
+        }
+      },
+      vertexShader: `
+      varying vec2 vUv;
+      
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+      }
+      `,
+      fragmentShader: `
+      uniform vec3 color1;
+      uniform vec3 color2;
+      
+      varying vec2 vUv;
+      
+      void main() {
+        
+        gl_FragColor = vec4(mix(color1, color2, vUv.y), 1.0);
+      }
+      `,
+      wireframe: true
+    });
+    
+    esfera = new THREE.Mesh( geoEsfera, material ); 
+    esfera2 = new THREE.Mesh( geoEsfera2, material ); 
+    // esfera3 = new THREE.Mesh( geoEsfera2, material ); 
+    
+    esfera.position.set(-30, 60, 20);
+    esfera2.position.set(0, 20, 20);
+    cubo.position.set(0, 0, 0);
+    
+    scene.add(esfera);
+    scene.add(esfera2);
+    scene.add(cubo);
+    // scene.add(esfera3);
+    
+    pivotPoint = new THREE.Object3D();
+    esfera.add(pivotPoint);
+    pivotPoint.add(esfera2);
+    pivotPoint.add(cubo);
+  }
+  
+  function rodarEsfera() {
+    let vel = 0.005;
+    let time = Date.now() * 0.0005;
+    esfera.rotation.x -= vel;
+    esfera.rotation.y -= vel;
+    // esfera.rotation.z -= vel;
+	  esfera2.position.x = Math.cos( time * 7 ) * 3;
+	  cubo.position.x = Math.cos( time * 10 ) * 5;
+    pivotPoint.rotation.x += 0.05;
+	  // esfera.position.y = Math.cos( time * 7 ) * 3;
+	  // esfera.position.z = Math.cos( time * 8 ) * 4;
 }
-function animate2(){
-  renderer.render(scene,camera);
-  requestAnimationFrame(animate2);
-  //controls.update();
+  function threeResponsivo(){
+    // camera.aspect = window.innerWidth / window.innerHeight;
+    // camera.aspect = 200 / 200;
+    camera.aspect = container.offsetWidth / container.offsetHeight;
+    camera.updateProjectionMatrix();
+
+    // renderer.setSize(window.innerWidth, window.innerHeight);
+    // renderer.setSize( 200, 200 );
+    renderer.setSize( container.offsetWidth, container.offsetHeight );
+  }
+  
+  function animate() {
+    requestAnimationFrame( animate );
+    rodarEsfera();
+    // stats.update();
+    // camera.rotation.x += 0.01;
+    // camera.rotation.y += 0.005;
+    renderer.render( scene, camera );
+  }
+  
+  window.addEventListener('resize', threeResponsivo);
+  init();
+  animate();
 }
-// function animate() {
-//   requestAnimationFrame( animate );
-//   cube.rotation.x += 0.01;
-//   cube.rotation.y += 0.01;
-// 	renderer.render( scene, camera );
-// }
-function threeResponsivo(){
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-}
-window.addEventListener('resize', threeResponsivo);
-init();
-//animate();

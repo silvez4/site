@@ -6,12 +6,14 @@
   --green-neon: rgba(222, 254, 71, 1);
   --bg-blue: rgba(100, 253, 250, 1);
   --bg-preto: rgba(73, 50, 64, 1);
-  --bg-escuro: rgba(18, 4, 88, 0.5);
+  --bg-escuro: rgba(18, 4, 88, 0.8);
   --branco: rgba(226, 221, 223, 1);
 
   --tempo-menu: 300ms;
   scroll-behavior: smooth;
-  font-family: 'Roboto', sans-serif;
+  scroll-padding-top: 8rem;
+
+  font-family: 'Gruppo', cursive;
   font-size: 62.5%;
 }
 

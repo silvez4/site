@@ -1,78 +1,32 @@
+@font-face {
+  font-family: CyberPunk;
+  src: url(../fonts/Cyberpunk-Regular.ttf);
+}
+
 /* Corpo*/
 canvas {
   position: absolute;
-  height: 100%;
-  width: auto;
-  z-index: -1;
-}
-
-.inicio {
-  z-index: 10;
+  /* display: block; */
+  /* top: 0;
+  left: 0; */
+  /* height: auto;
+  width: auto; */
+  z-index: 2;
 }
 
 a {
+  z-index: 3;
   color: red;
 }
 
 body {
   overflow-x: hidden;
   background-image: url(../imagens/bg-cy.jpg);
+  background-color: #203A43;
   background-size: cover;
   background-repeat: no-repeat;
   height: auto;
-  font-size: clamp(1.2rem, 1.6rem, 2vw);
   color: var(--bg-blue);
-}
-
-.secao {
-  position: relative;
-  display: grid;
-  text-align: center;
-  flex-direction: column;
-  width: 98%;
-  height: 80vh;
-  margin: 2.5rem auto;
-  padding: 1rem;
-  background-color: var(--bg-escuro);
-  border-radius: 1rem;
-  box-shadow: 0.5em 0.5em 1em var(--blue-neon),
-    inset 0 0 1em var(--blue-neon);
-}
-
-.chamada {
-  position: relative;
-}
-
-.inicio {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.inicio .texto {
-  padding: 0 1rem 0 1rem;
-}
-
-.btn_mais {
-  margin-top: 1rem;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.inicio .nome {
-  color: var(--rosa-neon);
-  display: inline-block;
-  padding: 0 .5rem 0 .5rem;
-  font-style: italic;
-}
-
-.portfolio h2 {
-  text-align: center;
-  padding-bottom: 1rem;
-  text-decoration: underline;
 }
 
 li {
@@ -84,24 +38,151 @@ li a {
   color: var(--blue-neon);
 }
 
+.impressao {
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+}
+
+.secao {
+  font-size: clamp(12px, 2rem, 2vw);
+  position: relative;
+  display: grid;
+  text-align: center;
+  width: 100%;
+  min-height: 80vh;
+  height: auto;
+  margin: 4rem auto;
+  padding: 1rem;
+  background-color: var(--bg-escuro);
+  box-shadow: inset 0 0 1em var(--blue-neon);
+}
+
+.secao h2 {
+  text-align: center;
+  padding-bottom: .5rem;
+}
+
+.inicio {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "texto""imagem"
+    "chamada""chamada"; */
+}
+
+.apresentacao {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.inicio .texto {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  /* grid-template-columns: 50% 50%;
+  grid-auto-rows: 1fr 1fr;
+  grid-template-areas: "esquerda""."
+    ".""direito"; */
+}
+
+.texto>.esquerda {
+  grid-area: esquerda;
+}
+
+.texto>.direito {
+  grid-area: direito;
+}
+
+.inicio .div-luz-neon {
+  position: relative;
+  overflow: hidden;
+  max-height: 80vh;
+  border: 5rem black solid;
+}
+
+.inicio .div-luz-neon img {
+  height: 100%;
+  width: 100%;
+}
+
+/* 
+.inicio .nome {
+  color: var(--rosa-neon);
+  display: inline-block;
+  padding: 0 .5rem 0 .5rem;
+  font-style: italic;
+} */
+
+.inicio .chamada a {
+  position: relative;
+}
+
+.btn_mais {
+  margin-top: 1rem;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .trabalhos {
   overflow: hidden;
   padding-top: 1rem;
 }
 
-.portfolio img {
-  float: none;
-  padding: 2rem;
-  max-width: 20rem;
+.classico {
+  font-family: 'Dancing Script', cursive;
 }
 
-.portfolio ul>* {
-  text-shadow: 1px 1px 10px currentColor;
+.futuro {
+  font-family: CyberPunk;
+  transform: rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  display: inline-block;
+}
+
+.sobre img {
+  float: none;
+  padding: 1rem;
+  max-width: 30rem;
+  margin-bottom: 2rem;
+  background-image: linear-gradient(var(--blue-neon), var(--purple-neon), var(--rosa-neon));
+  border-radius: 100%;
+  height: 20rem;
+  width: 20rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.portfolio .trabalhos>* {
+  text-shadow: 2px 5px 10px currentColor;
+  padding-bottom: 1rem;
 }
 
 .portfolio li>a {
   color: var(--rosa-neon);
   padding-top: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .secao .conteudo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sobre img {
+    margin: 0 auto;
+    height: 30rem;
+    width: 30rem;
+  }
+
 }
 
 /* .portfolio::before,

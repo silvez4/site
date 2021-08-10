@@ -6,11 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/global.css">
   <link rel="stylesheet" href="./css/navbar.css">
   <link rel="stylesheet" href="./css/main.css">
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js
-  " defer></script> -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="./js/OrbitControls.js" defer></script>
@@ -18,46 +21,64 @@
   <title>Gabriel SA</title>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="./imagens/logo.png" alt="logo-site">
-    </div>
-    <div class="menu-mobile">
-      <span class="menu-mobile_btn"></span>
-    </div>
-      <ul class="menu">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#portfolio">Portfólio</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-  </header>
+<header>
+  <div class="logo">
+    <img src="./imagens/logo.png" alt="logo-site">
+  </div>
+  <div class="menu-mobile">
+    <span class="menu-mobile_btn"></span>
+  </div>
+  <ul class="menu">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</header>
+  <div id="impressao" class="impressao">
+  </div>
       <div id="inicio" class="inicio secao">
-          <div id="particles-inicio" class="particles-inicio"></div>
-        <div class="texto">
-          Olá, Sou<span class="nome">Gabriel Silva</span> Estudante de Ciência da Computação e Web Developer<br>
-            <a href="#portfolio" class="chamada">Conheça Mais <span class="btn_seta"></span></a>
+        <div class="apresentacao">
+          <div class="texto">
+            <h2 class="esquerdo">Primeiras Impressões</h2>
+            <h2 class="direito">Importam Muito</h2>
+            </div>
+            <div class="div-luz-neon"><img src="./imagens/bastao-luzes.jpg" alt="Bastão de Luzes Neon">
+            <!-- creditos: https://unsplash.com/photos/jqgy4GDPbv4?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink -->
+            </div>
         </div>
+        <a href="#portfolio" class="chamada">Faremos a Melhor Juntos<span class="btn_seta"></span></a>
       </div>
 
+      <div id="sobre" class="sobre secao">
+        <h2>Sobre</h2>
+        <div class="conteudo">
+          <div class="foto">
+              <img src="./imagens/me.jpeg" alt="foto-gabriel">
+          </div>
+          <div class="quem-sou">
+                Olá, Sou<span class="nome">Gabriel Silva</span> Estudante de Ciência da Computação e Web Developer<br>
+                <span class="classico">CLASSICO</span> sit amet consectetur adipisicing elit. Perspiciatis dolore sunt doloremque consequuntur. <span class="futuro">FUTURISTA</span>  architecto delectus cum odit, aspernatur quisquam, magnam at labore tempore nam eius, accusantium eaque voluptatum!
+          </div>
+        </div>
+      </div>
       <div id="portfolio" class="portfolio secao">
         <h2>Portfólio</h2>
         <div class="conteudo">
           <div>
-            <img src="./imagens/quadro.jpg" alt="foto-gabriel">
+            <!-- <img src="./imagens/me.jpeg" alt="foto-gabriel"> -->
           </div>
           <div>
             <ul class="trabalhos">
-              <li>Publike Marketing:<br>
-                <li><a href="http://ledluxiluminacao.com.br">LedLux</a></li>
+              <li>
+                <a href="http://ledluxiluminacao.com.br">LedLux</a>
               </li>
-              <li>Projetos GIT:<br>
-                <li><a href="https://github.com/silvez4">Silvez4</a></li>
+              <li>
+                <a href="https://github.com/silvez4">Silvez4</a>
               </li>
             </ul> 
           </div>
         </div>
       </div>
-    <canvas id="telaC"></canvas>
 </body>
 </html>

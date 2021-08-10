@@ -1,4 +1,5 @@
 header {
+  font-family: 'Roboto', sans-serif;
   display: grid;
   grid-template-columns: 1fr 1fr;
   background: var(--rosa-neon);
@@ -7,7 +8,7 @@ header {
   width: 100%;
   height: auto;
   text-align: center;
-  z-index: 999;
+  z-index: 9;
   font-size: 1.6rem;
 }
 
@@ -110,7 +111,6 @@ header {
 
 .menu a {
   display: block;
-  /* color: var(--purple-neon); */
   padding-right: 1rem;
   text-decoration: none;
   font-size: clamp(12px, 1.6rem, 2vw);
@@ -119,8 +119,8 @@ header {
 
 .menu a:hover,
 .menu a:focus {
-  color: var(--blue-neon);
-  background-color: var(--bg-preto);
+  color: var(--rosa-neon);
+  background-color: var(--blue-neon);
 }
 
 .menu a::after {
@@ -128,7 +128,7 @@ header {
   display: block;
   position: absolute;
   height: 3px;
-  background: var(--blue-neon);
+  background: var(--rosa-neon);
   left: 0;
   right: 0;
   transform: scale(0, 1);
@@ -156,7 +156,7 @@ header {
     align-items: center;
   }
 
-  /* EVITAR MAL ALINHAMENTO AO TROCAR PARA VERSAO NORMAL COM O MENU MOBILE ABERTO */
+  /* EVITAR MAL ALINHAMENTO AO TROCAR PARA VERSÃO NORMAL COM O MENU MOBILE ABERTO */
   .menu.open {
     transform: translateX(0%);
   }
